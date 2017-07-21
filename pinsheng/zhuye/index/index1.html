@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/basic.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/jquery.fullPage.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jquery.fullPage.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <title>Document</title>
+    <script>
+        $(function () {
+            //全屏滚动
+            $('#dowebok').fullpage({
+                anchors: ['home', 'person', 'work', 'portfolio'],
+                fixedElement: "menu",
+                menu: '#menu',
+//                menu: '.next',
+                continuousVertical: true,
+                afterLoad: function (an, index) {
+                    if (index == 3) {
+                        $(".index1").animate({width: "100%"});
+                        $(".index2").animate({width: "95%"});
+                        $(".index3").animate({width: "90%"});
+                        $(".index4").animate({width: "80%"});
+                    } else if (index == 5) {
+                        $(".next").css("transform", "rotate(-180deg)").addClass("active")
+                    }
+                },
+                onLeave: function (index) {
+                    if (index == 3) {
+                        $(".index1").animate({width: 0});
+                        $(".index2").animate({width: 0});
+                        $(".index3").animate({width: 0});
+                        $(".index4").animate({width: 0});
+                    } else if (index == 4) {
+                        $(".next").css("transform", "").removeClass("active");
+                    }
+                }//onleave 动画飞入飞出
+            });
+
+            $(window).resize(function () {
+                autoScrolling();
+            });
+
+            function autoScrolling() {
+                var $ww = $(window).width();
+                if ($ww < 1024) {
+                    $.fn.fullpage.setAutoScrolling(false);
+                } else {
+                    $.fn.fullpage.setAutoScrolling(true);
+                }
+            }
+
+            autoScrolling();
+
+            //选项卡
+            $(".resp_tab").click(function () {
+                var index = $(this).index();
+                $(".tab_img").filter(".active").removeClass("active").end().eq(index).addClass("active").fadeIn("slow")
+                $(".resp_tab").filter(".resp_tab_active").removeClass("resp_tab_active").end().eq(index).addClass("resp_tab_active").fadeIn(1000)
+            });
+
+        });
+    </script>
+</head>
+<body>
+<!--顶部下拉导航-->
+<div class="navbar navbar-default bs-dos-nav navbar-fixed-top sticky-navigation" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#rock-navigation">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">个人主页</a>
+        </div>
+        <nav class="collapse navbar-collapse" id="rock-navigation">
+            <ul class="nav navbar-nav navbar-right main-navigation text-uppercase" id="menu">
+                <li><a href="#home1" class="smoothScroll" data-menuanchor="home">首页</a></li>
+                <li><a href="#person1" class="smoothScroll" data-menuanchor="person">我的简介</a></li>
+                <li><a href="#work1" class="smoothScroll" data-menuanchor="work">我的技能</a></li>
+                <li><a href="#portfolio1" class="smoothScroll" data-menuanchor="portfolio">我的项目</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+<div id="dowebok">
+    <div id="home1" class="section templatemo-home">
+        <!--banner图-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-1"></div>
+                <div class="col-md-8 col-sm-10">
+                    <h1 class="tm-home-title"><strong>梁 彩 红</strong></h1>
+                    <h2 class="tm-home-subtitle">前端工程师</h2>
+                    <p>我是一名 <strong>前端工程师</strong> ，我的主要技能是 <strong>HTML5</strong> and <strong>CSS3</strong> and
+                        <strong>Javascript</strong>
+                        and <strong>Ajax</strong> and <strong>PHP</strong> and <strong>Angular</strong> and
+                        <strong>Node.js</strong>.接下来请看我的相关简介以及项目。</p>
+                </div>
+                <div class="col-md-2 col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+    <div id="person1" class="section about-me">
+        <!--我的简介-->
+        <div class="slide">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 about-left">
+                        <h1>About Me</h1>
+                        <img class="img-responsive center-block img-circle" src="../img/me.jpg" alt="">
+                    </div>
+                    <div class="col-md-6 about-right">
+                        <h1>基本信息</h1>
+                        <p>姓名：<strong>梁彩红</strong></p>
+                        <p>身高：<strong>168cm</strong></p>
+                        <p>专业：<strong>计算机信息管理</strong></p>
+                        <p>学校：<strong>山西金融职业学院</strong></p>
+                        <p>求职意向：<strong>前端工程师</strong></p>
+                        <p>主要技能：<strong>HTML\CSS\JAVASCRIPT\PHP</strong></p>
+                        <p>电话：<strong>15703415341</strong></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 about-left">
+                        <h1>About Me</h1>
+                        <img class="img-responsive center-block img-circle" src="../img/me.jpg" alt="">
+                    </div>
+                    <div class="col-md-6 about-right">
+                        <h1>工作经验</h1>
+                        <p>工作时间：<strong>2016.9-至今</strong></p>
+                        <p>工作单位：<strong>天津望天涯科技有限公司</strong></p>
+                        <p>工作岗位：<strong>前端工程师</strong></p>
+                        <p>工作描述：1)利用Html5技术开发移动web前端页面，解决前端JavaScript和CSS等技术问题
+                            2)负责与产品经理和项目经理沟通需求，配合UI设计实现界面展示和交互效果
+                            3)易用性改进和前端界面技术优化，优化代码并保持良好的兼容性
+                            4)配合产品经理和设计师，研究并改善用户体验</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="work1" class="section skill">
+        <!--我的技能-->
+        <div class="services">
+            <div class="container">
+                <div class="row">
+                    <h3>
+                        <a href="">我的技能</a>
+                    </h3>
+                    <lible class="line"></lible>
+                    <div class="col-md-6 col-sm-6 skill_left">
+                        <h4>技能</h4>
+                        <p>
+                            技能，是一个人所在社会存在的必备需求。以下是我所掌握的所有技能。 <br>
+                            我精通HTML、CSS、Javascript、Ajax等前端技术。
+                        </p>
+                        <p>
+                            我熟练掌握了Bootstrap、swiper等框架，熟练运用JQuery、iscroll等框架 <br>
+                            我对后台PHP、Node.js、Angular以及vue也有着一定的了解。
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 skill_right">
+                        <div class="bar_group">
+                            <p class="b_lable">PS</p>
+                            <div class="bar_yuan">
+                                <div class="bar_group_bar index1">
+                                    <div class="b_top">
+                                        <span>100</span>
+                                        <div class="b_jiao"></div>
+                                    </div>
+                                    <div class="btn_min">
+                                        0
+                                    </div>
+                                    <div class="btn_max">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="b_lable" style="margin-top:50px;">HTML</p>
+                            <div class="bar_yuan">
+                                <div class="bar_group_bar index2">
+                                    <div class="b_top">
+                                        <span>95</span>
+                                        <div class="b_jiao"></div>
+                                    </div>
+                                    <div class="btn_min">
+                                        0
+                                    </div>
+                                    <div class="btn_max">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="b_lable" style="margin-top:50px;">Javascript</p>
+                            <div class="bar_yuan">
+                                <div class="bar_group_bar index3">
+                                    <div class="b_top">
+                                        <span>90</span>
+                                        <div class="b_jiao"></div>
+                                    </div>
+                                    <div class="btn_min">
+                                        0
+                                    </div>
+                                    <div class="btn_max">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="b_lable" style="margin-top:50px;">PHP</p>
+                            <div class="bar_yuan">
+                                <div class="bar_group_bar index4">
+                                    <div class="b_top">
+                                        <span>80</span>
+                                        <div class="b_jiao"></div>
+                                    </div>
+                                    <div class="btn_min">
+                                        0
+                                    </div>
+                                    <div class="btn_max">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="portfolio1">
+        <div class="zuopin">
+            <div class="container">
+                <div class="row">
+                    <h3>我的作品</h3>
+                    <label class="line"></label>
+                    <div class="sap_tabs">
+                        <div class="horizontalTabta" style="height: 647px;">
+                            <ul class="table">
+                                <li class="resp_tab resp_tab_active">
+                                    <a href="#" title="">PS</a>
+                                </li>
+                                <li class="resp_tab">
+                                    <a href="#" title="">网页</a>
+                                </li>
+                                <li class="resp_tab ">
+                                    <a href="#" title="">游戏</a>
+                                </li>
+                            </ul>
+                            <!--<div class="tabs_container">-->
+                            <div class="tab_1">
+                                <div class="tab_img clearfix active" id="tabs-1">
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <img src="../img/1.jpg" alt="" class="tu" data-trigger="zoomerang">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <img src="../img/3.jpg" alt="" class="tu" data-trigger="zoomerang">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <img src="../img/6.jpg" alt="" class="tu" data-trigger="zoomerang">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab_img clearfix" id="tabs-2">
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <a href="" style="display: block;">
+                                                <img src="../img/hun.jpg" alt="" class="tu">
+                                                <div class="zhe"></div>
+                                            </a>
+                                            <a href="saolei/lei.html" target="_black" style="width:350px;height:
+                                             233px;position: absolute;">
+                                                <figcaption>
+                                                    <h2>
+                                                        <a href="" style="color:#fff!important;">我的作品-婚纱网页</a>
+                                                    </h2>
+                                                    <div class="xian"></div>
+                                                    <p>Marley tried to convince her but she was not
+                                                        interested.</p>
+                                                </figcaption>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <a href="" style="display: block;">
+                                                <img src="../img/food.jpg" alt="" class="tu">
+                                                <div class="zhe"></div>
+                                            </a>
+                                            <a href="daziyouxi/index.html" target="_black"
+                                               style="width:1px;height:
+                                             233px;position: absolute;">
+                                                <figcaption>
+                                                    <h2>
+                                                        <a href="" style="color: #fff!important;">我的作品-打字游戏</a>
+                                                    </h2>
+                                                    <div class="xian"></div>
+                                                    <p>Marley tried to convince her but she was not
+                                                        interested.</p>
+                                                </figcaption>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <a href="diandian/donghua.html" style="display: block;">
+                                                <img src="../img/food.jpg" alt="" class="tu">
+                                                <div class="zhe"></div>
+                                            </a>
+                                            <a href="diandian/donghua.html" target="_black" style="width:350px;height:
+                                             233px;position: absolute;">
+                                                <figcaption>
+                                                    <h2>
+                                                        <a href="" style="color:#fff!important;">我的作品-美食APP</a>
+                                                    </h2>
+                                                    <div class="xian"></div>
+                                                    <p>Marley tried to convince her but she was not
+                                                        interested.</p>
+                                                </figcaption>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab_img clearfix" id="tabs-3">
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <a href="" style="display: block;">
+                                                <img src="../img/lei2.png" alt="" class="tu">
+                                                <div class="zhe"></div>
+                                            </a>
+                                            <a href="saolei/lei.html" target="_black" style="width:350px;height:
+                                             233px;position: absolute;">
+                                                <figcaption>
+                                                    <h2>
+                                                        <a href="" style="color:#fff!important;">我的作品-扫雷游戏</a>
+                                                    </h2>
+                                                    <div class="xian"></div>
+                                                    <p>Marley tried to convince her but she was not
+                                                        interested.</p>
+                                                </figcaption>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <a href="" style="display: block;">
+                                                <img src="../img/dazi.jpg" alt="" class="tu">
+                                                <div class="zhe"></div>
+                                            </a>
+                                            <a href="daziyouxi/index.html" target="_black"
+                                               style="width:1px;height:
+                                             233px;position: absolute;">
+                                                <figcaption>
+                                                    <h2>
+                                                        <a href="" style="color: #fff!important;">我的作品-打字游戏</a>
+                                                    </h2>
+                                                    <div class="xian"></div>
+                                                    <p>Marley tried to convince her but she was not
+                                                        interested.</p>
+                                                </figcaption>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 tab_img_first">
+                                        <div class="tab_img_first_nei">
+                                            <a href="diandian/donghua.html" style="display: block;">
+                                                <img src="..//img/dou.jpg" alt="" class="tu">
+                                                <div class="zhe"></div>
+                                            </a>
+                                            <a href="diandian/donghua.html" target="_black" style="width:350px;height:
+                                             233px;position: absolute;">
+                                                <figcaption>
+                                                    <h2>
+                                                        <a href="" style="color:#fff!important;">我的作品-粒子动画</a>
+                                                    </h2>
+                                                    <div class="xian"></div>
+                                                    <p>Marley tried to convince her but she was not
+                                                        interested.</p>
+                                                </figcaption>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--箭头-->
+    <div class="next">
+        <i class="iconfont ">&#xe647;</i>
+    </div>
+</div>
+</body>
+</html>
